@@ -22,35 +22,130 @@
       rel="stylesheet"
     />
 
-    <!-- Meta Pixel Code - MB Digital -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window,document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+    <!--
+      MB DIGITAL - CONSENTIMENTO DE MARKETING
 
-      fbq('init', '3687088191444253');
-      fbq('track', 'PageView');
+      O Pixel da Meta não é carregado automaticamente.
+
+      A função MBConsent.accept() ativa o Pixel
+      somente depois da autorização do visitante.
+
+      A função MBConsent.reject() recusa o rastreamento.
+
+      A função MBConsent.reopen() permite que o visitante
+      altere sua escolha pela interface do site.
+    -->
+
+    <script>
+      (function () {
+        "use strict";
+
+        var PIXEL_ID = "3687088191444253";
+        var STORAGE_KEY = "mbdigital_marketing_consent";
+        var pixelInitialized = false;
+
+        function getConsent() {
+          try {
+            var value = localStorage.getItem(STORAGE_KEY);
+
+            if (value === "accepted" || value === "rejected") {
+              return value;
+            }
+          } catch (error) {
+            return null;
+          }
+
+          return null;
+        }
+
+        function saveConsent(value) {
+          try {
+            localStorage.setItem(STORAGE_KEY, value);
+          } catch (error) {
+            // O site continua funcionando sem armazenamento.
+          }
+        }
+
+        function loadMetaPixel() {
+          if (pixelInitialized) {
+            return;
+          }
+
+          pixelInitialized = true;
+
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(
+            window,
+            document,
+            "script",
+            "https://connect.facebook.net/en_US/fbevents.js"
+          );
+
+          window.fbq("init", PIXEL_ID);
+          window.fbq("track", "PageView");
+        }
+
+        function notifyConsentChange() {
+          window.dispatchEvent(
+            new CustomEvent("mbdigital:consentchange", {
+              detail: {
+                consent: getConsent()
+              }
+            })
+          );
+        }
+
+        window.MBConsent = {
+          get: function () {
+            return getConsent();
+          },
+
+          accept: function () {
+            saveConsent("accepted");
+            loadMetaPixel();
+            notifyConsentChange();
+          },
+
+          reject: function () {
+            saveConsent("rejected");
+
+            // Impede novos eventos enviados pelo código do site.
+            // Se o Pixel já foi carregado, a revogação não
+            // desfaz eventos enviados anteriormente.
+            pixelInitialized = false;
+
+            if (typeof window.fbq === "function") {
+              window.fbq = function () {};
+            }
+
+            notifyConsentChange();
+
+            // Recarrega para interromper a execução do Pixel
+            // que já tenha sido carregado anteriormente.
+            window.location.reload();
+          },
+
+          reopen: function () {
+            window.dispatchEvent(
+              new CustomEvent("mbdigital:openconsent")
+            );
+          }
+        };
+
+        // Respeita uma autorização previamente registrada.
+        if (getConsent() === "accepted") {
+          loadMetaPixel();
+        }
+      })();
     </script>
-    <!-- End Meta Pixel Code -->
   </head>
 
   <body>
-    <!-- Meta Pixel - Fallback sem JavaScript -->
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style="display:none"
-        src="https://www.facebook.com/tr?id=3687088191444253&amp;ev=PageView&amp;noscript=1"
-        alt=""
-      />
-    </noscript>
-
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
