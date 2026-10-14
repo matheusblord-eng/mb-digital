@@ -22,7 +22,8 @@ body {
   min-width: 320px;
 }
 
-button, a {
+button,
+a {
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -54,7 +55,7 @@ a:focus-visible {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(8, 13, 11, 0.94);
+  background: rgba(8, 13, 11, 0.96);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid #ffffff12;
 }
@@ -74,6 +75,13 @@ a:focus-visible {
   flex-shrink: 0;
 }
 
+.brand img {
+  width: 62px !important;
+  height: 62px !important;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
 .brand-mark {
   font-size: 31px;
   font-weight: 900;
@@ -87,7 +95,7 @@ a:focus-visible {
 .brand-name {
   font-size: 13px;
   font-weight: 800;
-  letter-spacing: 3px;
+  letter-spacing: 2.5px;
 }
 
 .nav {
@@ -130,9 +138,13 @@ a:focus-visible {
 
 .hero {
   position: relative;
-  padding: 105px 0 0;
+  padding: 90px 0 0;
   background:
-    radial-gradient(ellipse at 82% 42%, #0c37231c, transparent 48%),
+    radial-gradient(
+      ellipse at 82% 42%,
+      #0c37231c,
+      transparent 48%
+    ),
     #080d0b;
 }
 
@@ -155,7 +167,7 @@ a:focus-visible {
   grid-template-columns: 1.08fr 0.92fr;
   align-items: center;
   gap: 60px;
-  padding-bottom: 105px;
+  padding-bottom: 90px;
 }
 
 .eyebrow,
@@ -182,14 +194,16 @@ a:focus-visible {
   background: #42ed91;
   border-radius: 50%;
   box-shadow: 0 0 12px #42ed91;
+  flex-shrink: 0;
 }
 
 .hero h1 {
   margin: 30px 0 25px;
-  font-size: clamp(39px, 4.3vw, 65px);
-  line-height: 1.12;
-  letter-spacing: -3px;
+  font-size: clamp(36px, 3.8vw, 58px);
+  line-height: 1.16;
+  letter-spacing: -2.2px;
   font-weight: 900;
+  overflow-wrap: normal;
 }
 
 .hero h1 span,
@@ -250,7 +264,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-top: 42px;
+  margin-top: 36px;
   color: #8d9d92;
   font-size: 12px;
   line-height: 1.6;
@@ -261,7 +275,7 @@ a:focus-visible {
 }
 
 .hero-visual {
-  min-height: 445px;
+  min-height: 420px;
   position: relative;
   display: flex;
   align-items: center;
@@ -292,7 +306,9 @@ a:focus-visible {
   background: #111b16;
   border: 1px solid #315440;
   border-radius: 17px;
-  box-shadow: 0 35px 100px #0009, 0 0 80px #42ed910a;
+  box-shadow:
+    0 35px 100px #0009,
+    0 0 80px #42ed910a;
   transform: perspective(1100px) rotateY(-5deg) rotateX(3deg);
   overflow: hidden;
 }
@@ -453,7 +469,7 @@ a:focus-visible {
 }
 
 .section {
-  padding: 115px 0;
+  padding: 105px 0;
 }
 
 .services {
@@ -499,7 +515,9 @@ a:focus-visible {
   background: #141f18;
   border: 1px solid #ffffff10;
   border-radius: 13px;
-  transition: border-color 0.2s, transform 0.2s;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
 }
 
 .service-card:hover {
@@ -564,7 +582,8 @@ a:focus-visible {
 
 .about-graphic {
   min-height: 490px;
-  background: linear-gradient(145deg, #153e27, #0c1a12 70%);
+  background:
+    linear-gradient(145deg, #153e27, #0c1a12 70%);
   padding: 20px;
   border-radius: 20px;
   border: 1px solid #42ed9130;
@@ -691,7 +710,8 @@ a:focus-visible {
   align-items: center;
   padding: 70px 75px;
   border-radius: 22px;
-  background: linear-gradient(110deg, #153b25, #0d2418);
+  background:
+    linear-gradient(110deg, #153b25, #0d2418);
   border: 1px solid #42ed9140;
 }
 
@@ -735,7 +755,9 @@ a:focus-visible {
   border: 1px solid #42ed9150;
   border-radius: 50%;
   color: #42ed91;
-  box-shadow: 0 0 0 45px #42ed9109, 0 0 0 90px #42ed9106;
+  box-shadow:
+    0 0 0 45px #42ed9109,
+    0 0 0 90px #42ed9106;
 }
 
 .footer {
@@ -836,11 +858,21 @@ a:focus-visible {
   }
 
   .header-inner {
-    min-height: 70px;
+    min-height: 74px;
   }
 
-  .brand-mark {
-    font-size: 27px;
+  .brand {
+    gap: 9px;
+  }
+
+  .brand img {
+    width: 58px !important;
+    height: 58px !important;
+  }
+
+  .brand-name {
+    font-size: 12px;
+    letter-spacing: 2px;
   }
 
   .menu-toggle {
@@ -850,7 +882,7 @@ a:focus-visible {
   .nav {
     display: none;
     position: absolute;
-    top: 70px;
+    top: 74px;
     left: 0;
     right: 0;
     flex-direction: column;
@@ -870,47 +902,99 @@ a:focus-visible {
   }
 
   .hero {
-    padding-top: 65px;
+    padding-top: 43px;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
-    padding-bottom: 70px;
+    gap: 35px;
+    padding-bottom: 48px;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 10px 12px;
   }
 
   .hero h1 {
-    font-size: clamp(37px, 8vw, 53px);
-    letter-spacing: -1.8px;
+    font-size: clamp(32px, 7.5vw, 42px);
+    line-height: 1.14;
+    letter-spacing: -1.2px;
+    margin: 25px 0 18px;
   }
 
   .hero-description {
     font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    margin-top: 26px;
+  }
+
+  .hero-proof {
+    margin-top: 25px;
   }
 
   .hero-visual {
-    min-height: 360px;
+    min-height: auto;
   }
 
   .dashboard {
     transform: none;
   }
 
+  .dashboard-top {
+    padding: 13px 17px;
+  }
+
+  .dashboard-body {
+    padding: 24px 20px 19px;
+  }
+
+  .dashboard-heading {
+    font-size: 25px;
+  }
+
+  .chart-visual {
+    height: 110px;
+    margin: 17px 0;
+  }
+
   .floating-card {
-    right: -7px;
-    bottom: -12px;
+    right: -5px;
+    bottom: -13px;
+    padding: 10px;
+  }
+
+  .floating-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .floating-card strong {
+    font-size: 10px;
+  }
+
+  .floating-card small {
+    font-size: 9px;
+  }
+
+  .visual-orbit {
+    display: none;
   }
 
   .hero-bottom {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 13px;
     text-align: center;
     font-size: 9px;
   }
 
   .section {
-    padding: 80px 0;
+    padding: 72px 0;
   }
 
   .section-heading {
@@ -935,11 +1019,11 @@ a:focus-visible {
   }
 
   .about-graphic {
-    min-height: 380px;
+    min-height: 350px;
   }
 
   .about-graphic-inner {
-    min-height: 340px;
+    min-height: 310px;
     padding: 25px;
   }
 
@@ -985,21 +1069,25 @@ a:focus-visible {
     width: 100%;
   }
 
-  .eyebrow {
-    font-size: 9px;
-    letter-spacing: 1px;
+  .hero h1 {
+    font-size: clamp(30px, 7.2vw, 34px);
   }
 
   .dashboard-body {
-    padding: 24px 18px;
+    padding: 22px 17px;
   }
 
   .dashboard-heading {
-    font-size: 25px;
+    font-size: 23px;
+  }
+
+  .dashboard-tags {
+    gap: 6px;
   }
 
   .dashboard-tags span {
     font-size: 9px;
+    padding: 7px;
   }
 
   .process-grid {
@@ -1012,6 +1100,13 @@ a:focus-visible {
 
   .footer-brand {
     grid-column: auto;
+  }
+
+  .whatsapp-float {
+    right: 18px;
+    bottom: 18px;
+    width: 54px;
+    height: 54px;
   }
 }
 
