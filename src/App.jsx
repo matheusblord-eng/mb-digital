@@ -10,6 +10,7 @@ import {
   Menu,
   MessageCircle,
   MousePointerClick,
+  PanelsTopLeft,
   Search,
   ShieldCheck,
   Target,
@@ -50,6 +51,13 @@ const services = [
     title: "Análise e Otimização",
     description:
       "Acompanhamento de métricas e ajustes contínuos para melhorar o desempenho das campanhas.",
+  },
+  {
+    icon: PanelsTopLeft,
+    number: "05",
+    title: "Criação de Landing Pages",
+    description:
+      "Desenvolvimento de páginas profissionais, responsivas e estratégicas para apresentar serviços, apoiar campanhas de tráfego pago e captar potenciais clientes.",
   },
 ];
 
@@ -123,7 +131,7 @@ export default function App() {
 
           <a
             href={`${WHATSAPP}?text=${encodeURIComponent(
-              "Olá! Gostaria de saber mais sobre a gestão de tráfego pago da MB Digital."
+              "Olá! Gostaria de saber mais sobre as soluções digitais da MB Digital."
             )}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -308,8 +316,9 @@ export default function App() {
               </div>
 
               <p>
-                Cada negócio tem seus desafios. Desenvolvemos estratégias
-                de mídia paga alinhadas aos seus objetivos.
+                Cada negócio tem seus desafios. Desenvolvemos soluções
+                de marketing digital e páginas estratégicas alinhadas
+                aos seus objetivos.
               </p>
             </div>
 
