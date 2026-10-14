@@ -17,6 +17,8 @@ import {
   X,
 } from "lucide-react";
 
+import logo from "../unnamed.png";
+
 const WHATSAPP = "https://wa.me/5583999378365";
 const INSTAGRAM = "https://www.instagram.com/matheussbl/";
 
@@ -76,6 +78,25 @@ function WhatsAppButton({ children, className = "", message }) {
   );
 }
 
+function BrandLogo() {
+  return (
+    <a href="#inicio" className="brand" aria-label="MB Digital - Início">
+      <img
+        src={logo}
+        alt="Logomarca MB Digital"
+        style={{
+          width: "54px",
+          height: "54px",
+          objectFit: "contain",
+          borderRadius: "50%",
+          flexShrink: 0,
+        }}
+      />
+      <span className="brand-name">MB DIGITAL</span>
+    </a>
+  );
+}
+
 export default function App() {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
@@ -83,10 +104,7 @@ export default function App() {
     <div className="site">
       <header className="header">
         <div className="container header-inner">
-          <a href="#inicio" className="brand" aria-label="MB Digital - Início">
-            <span className="brand-mark">MB<span>.</span></span>
-            <span className="brand-name">DIGITAL</span>
-          </a>
+          <BrandLogo />
 
           <nav className={`nav ${menuOpen ? "nav-open" : ""}`}>
             <a href="#inicio" onClick={() => setMenuOpen(false)}>
@@ -160,12 +178,19 @@ export default function App() {
               </div>
 
               <div className="hero-proof">
-                <span className="proof-icon"><ShieldCheck size={20} /></span>
-                <span>Estratégia, análise e acompanhamento em cada campanha.</span>
+                <span className="proof-icon">
+                  <ShieldCheck size={20} />
+                </span>
+                <span>
+                  Estratégia, análise e acompanhamento em cada campanha.
+                </span>
               </div>
             </div>
 
-            <div className="hero-visual" aria-label="Painel ilustrativo de marketing digital">
+            <div
+              className="hero-visual"
+              aria-label="Painel ilustrativo de marketing digital"
+            >
               <div className="visual-orbit orbit-one" />
               <div className="visual-orbit orbit-two" />
 
@@ -179,29 +204,49 @@ export default function App() {
                 </div>
 
                 <div className="dashboard-body">
-                  <div className="dashboard-label">MARKETING DE PERFORMANCE</div>
-                  <div className="dashboard-heading">
-                    Decisões baseadas <br /> em dados<span>.</span>
+                  <div className="dashboard-label">
+                    MARKETING DE PERFORMANCE
                   </div>
-                  <p>
-                    Planejar. Analisar. Otimizar.
-                  </p>
+
+                  <div className="dashboard-heading">
+                    Decisões baseadas
+                    <br />
+                    em dados<span>.</span>
+                  </div>
+
+                  <p>Planejar. Analisar. Otimizar.</p>
 
                   <div className="chart-visual">
                     <div className="chart-grid">
                       <span /><span /><span /><span />
                     </div>
+
                     <svg
                       viewBox="0 0 420 160"
                       preserveAspectRatio="none"
                       aria-hidden="true"
                     >
                       <defs>
-                        <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
-                          <stop offset="0%" stopColor="#38e58b" stopOpacity=".24" />
-                          <stop offset="100%" stopColor="#38e58b" stopOpacity="0" />
+                        <linearGradient
+                          id="chartFill"
+                          x1="0"
+                          x2="0"
+                          y1="0"
+                          y2="1"
+                        >
+                          <stop
+                            offset="0%"
+                            stopColor="#38e58b"
+                            stopOpacity=".24"
+                          />
+                          <stop
+                            offset="100%"
+                            stopColor="#38e58b"
+                            stopOpacity="0"
+                          />
                         </linearGradient>
                       </defs>
+
                       <path
                         d="M0 140 C45 130 65 112 100 120 S165 90 205 94 S275 48 315 65 S370 20 420 14 L420 160 L0 160 Z"
                         fill="url(#chartFill)"
@@ -226,7 +271,9 @@ export default function App() {
               </div>
 
               <div className="floating-card">
-                <span className="floating-icon"><TrendingUp size={21} /></span>
+                <span className="floating-icon">
+                  <TrendingUp size={21} />
+                </span>
                 <div>
                   <strong>Otimização contínua</strong>
                   <small>Foco em oportunidades reais</small>
@@ -259,6 +306,7 @@ export default function App() {
                   <span>ir mais longe.</span>
                 </h2>
               </div>
+
               <p>
                 Cada negócio tem seus desafios. Desenvolvemos estratégias
                 de mídia paga alinhadas aos seus objetivos.
@@ -272,8 +320,12 @@ export default function App() {
                 return (
                   <article className="service-card" key={service.number}>
                     <div className="service-top">
-                      <div className="service-icon"><Icon size={27} /></div>
-                      <span className="service-number">{service.number}</span>
+                      <div className="service-icon">
+                        <Icon size={27} />
+                      </div>
+                      <span className="service-number">
+                        {service.number}
+                      </span>
                     </div>
 
                     <h3>{service.title}</h3>
@@ -301,7 +353,13 @@ export default function App() {
             <div className="about-graphic">
               <div className="about-graphic-inner">
                 <span className="graphic-small">MB DIGITAL</span>
-                <Target className="graphic-target" size={105} strokeWidth={1} />
+
+                <Target
+                  className="graphic-target"
+                  size={105}
+                  strokeWidth={1}
+                />
+
                 <strong>
                   Não é apenas
                   <br />
@@ -309,12 +367,17 @@ export default function App() {
                   <br />
                   <span>É ter estratégia.</span>
                 </strong>
-                <span className="graphic-footer">TRÁFEGO PAGO • MARKETING DIGITAL</span>
+
+                <span className="graphic-footer">
+                  TRÁFEGO PAGO • MARKETING DIGITAL
+                </span>
               </div>
             </div>
 
             <div className="about-content">
-              <span className="section-kicker">POR QUE A MB DIGITAL?</span>
+              <span className="section-kicker">
+                POR QUE A MB DIGITAL?
+              </span>
 
               <h2>
                 Mais que anúncios.
@@ -352,10 +415,14 @@ export default function App() {
         <section className="process section">
           <div className="container">
             <div className="process-heading">
-              <span className="section-kicker">NOSSA METODOLOGIA</span>
+              <span className="section-kicker">
+                NOSSA METODOLOGIA
+              </span>
+
               <h2>
                 Da estratégia à <span>otimização.</span>
               </h2>
+
               <p>
                 Um processo organizado para orientar cada decisão.
               </p>
@@ -363,10 +430,26 @@ export default function App() {
 
             <div className="process-grid">
               {[
-                ["01", "Diagnóstico", "Entendemos o negócio, o público e os objetivos."],
-                ["02", "Planejamento", "Definimos campanhas, canais e direcionamento estratégico."],
-                ["03", "Execução", "Colocamos as campanhas no ar e acompanhamos os dados."],
-                ["04", "Otimização", "Analisamos o desempenho e identificamos melhorias."],
+                [
+                  "01",
+                  "Diagnóstico",
+                  "Entendemos o negócio, o público e os objetivos.",
+                ],
+                [
+                  "02",
+                  "Planejamento",
+                  "Definimos campanhas, canais e direcionamento estratégico.",
+                ],
+                [
+                  "03",
+                  "Execução",
+                  "Colocamos as campanhas no ar e acompanhamos os dados.",
+                ],
+                [
+                  "04",
+                  "Otimização",
+                  "Analisamos o desempenho e identificamos melhorias.",
+                ],
               ].map(([number, title, description]) => (
                 <div className="process-step" key={number}>
                   <span>{number}</span>
@@ -382,13 +465,18 @@ export default function App() {
           <div className="container">
             <div className="cta-box">
               <div className="cta-light" />
+
               <div className="cta-content">
-                <span className="section-kicker">VAMOS CONVERSAR?</span>
+                <span className="section-kicker">
+                  VAMOS CONVERSAR?
+                </span>
+
                 <h2>
                   Seus próximos clientes
                   <br />
                   podem estar <span>online.</span>
                 </h2>
+
                 <p>
                   Descubra como uma estratégia de tráfego pago pode
                   ajudar sua empresa a alcançar novas oportunidades.
@@ -413,10 +501,8 @@ export default function App() {
         <div className="container">
           <div className="footer-main">
             <div className="footer-brand">
-              <a href="#inicio" className="brand">
-                <span className="brand-mark">MB<span>.</span></span>
-                <span className="brand-name">DIGITAL</span>
-              </a>
+              <BrandLogo />
+
               <p>
                 Gestão de tráfego pago e estratégias digitais
                 para empresas que querem crescer.
@@ -433,19 +519,36 @@ export default function App() {
 
             <div className="footer-links">
               <strong>Contato</strong>
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">
+
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <MessageCircle size={16} /> WhatsApp
               </a>
-              <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">
+
+              <a
+                href={INSTAGRAM}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Instagram size={16} /> Instagram
               </a>
+
               <span>Atendimento online</span>
             </div>
           </div>
 
           <div className="footer-bottom">
-            <span>© {new Date().getFullYear()} MB Digital. Todos os direitos reservados.</span>
-            <span>Estratégia que conecta negócios a oportunidades.</span>
+            <span>
+              © {new Date().getFullYear()} MB Digital.
+              Todos os direitos reservados.
+            </span>
+
+            <span>
+              Estratégia que conecta negócios a oportunidades.
+            </span>
           </div>
         </div>
       </footer>
