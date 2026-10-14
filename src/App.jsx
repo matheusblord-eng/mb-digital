@@ -9,6 +9,7 @@ import {
   Instagram,
   Menu,
   MessageCircle,
+  Cookie,
   MousePointerClick,
   PanelsTopLeft,
   Search,
@@ -105,32 +106,67 @@ function BrandLogo() {
   );
 }
 
+const textButtonStyle = {
+  border: 0,
+  background: "transparent",
+  color: "#38e58b",
+  textDecoration: "underline",
+  cursor: "pointer",
+  padding: 0,
+  font: "inherit",
+  fontSize: 14,
+};
+
 export default function App() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [consent, setConsent] = React.useState(() =>
+    typeof window !== "undefined" ? window.MBConsent?.get() ?? null : null
+  );
+  const [consentOpen, setConsentOpen] = React.useState(() =>
+    typeof window !== "undefined" ? !window.MBConsent?.get() : false
+  );
+  const [privacyOpen, setPrivacyOpen] = React.useState(false);
 
-  // Registra cliques nos links do WhatsApp.
-  // Contact indica clique, não mensagem enviada.
+  React.useEffect(() => {
+    const openConsent = () => setConsentOpen(true);
+    const syncConsent = () => {
+      const choice = window.MBConsent?.get() ?? null;
+      setConsent(choice);
+      if (choice) setConsentOpen(false);
+    };
+    window.addEventListener("mbdigital:openconsent", openConsent);
+    window.addEventListener("mbdigital:consentchange", syncConsent);
+    return () => {
+      window.removeEventListener("mbdigital:openconsent", openConsent);
+      window.removeEventListener("mbdigital:consentchange", syncConsent);
+    };
+  }, []);
+
+  function chooseConsent(accepted) {
+    if (accepted) window.MBConsent?.accept();
+    else window.MBConsent?.reject();
+    setConsent(accepted ? "accepted" : "rejected");
+    setConsentOpen(false);
+  }
+
+
+  // Registra o clique em qualquer link do WhatsApp da página.
+  // O evento indica intenção de contato, não mensagem enviada.
   function handleWhatsAppClick(event) {
-    const link = event.target.closest?.("a[href]");
+    const link = event.target.closest?.('a[href]');
     if (!link) return;
 
     try {
       const url = new URL(link.href);
+      if (url.hostname !== 'wa.me' && url.hostname !== 'api.whatsapp.com') return;
 
-      if (
-        url.hostname !== "wa.me" &&
-        url.hostname !== "api.whatsapp.com"
-      ) {
-        return;
-      }
-
-      if (typeof window.fbq === "function") {
-        window.fbq("track", "Contact", {
-          contact_method: "WhatsApp",
+      if (window.MBConsent?.get() === 'accepted' && typeof window.fbq === 'function') {
+        window.fbq('track', 'Contact', {
+          contact_method: 'WhatsApp',
         });
       }
     } catch (error) {
-      // O rastreamento não deve impedir a navegação.
+      // Não interrompe a navegação caso o rastreamento falhe.
     }
   }
 
@@ -180,7 +216,6 @@ export default function App() {
       <main>
         <section className="hero" id="inicio">
           <div className="hero-glow" />
-
           <div className="container hero-grid">
             <div className="hero-content">
               <div className="eyebrow">
@@ -232,9 +267,7 @@ export default function App() {
               <div className="dashboard">
                 <div className="dashboard-top">
                   <div className="dashboard-dots">
-                    <i />
-                    <i />
-                    <i />
+                    <i /><i /><i />
                   </div>
                   <span>VISÃO ESTRATÉGICA</span>
                   <BarChart3 size={17} />
@@ -255,10 +288,7 @@ export default function App() {
 
                   <div className="chart-visual">
                     <div className="chart-grid">
-                      <span />
-                      <span />
-                      <span />
-                      <span />
+                      <span /><span /><span /><span />
                     </div>
 
                     <svg
@@ -291,7 +321,6 @@ export default function App() {
                         d="M0 140 C45 130 65 112 100 120 S165 90 205 94 S275 48 315 65 S370 20 420 14 L420 160 L0 160 Z"
                         fill="url(#chartFill)"
                       />
-
                       <path
                         d="M0 140 C45 130 65 112 100 120 S165 90 205 94 S275 48 315 65 S370 20 420 14"
                         fill="none"
@@ -299,26 +328,14 @@ export default function App() {
                         strokeWidth="3"
                         strokeLinecap="round"
                       />
-
-                      <circle
-                        cx="420"
-                        cy="14"
-                        r="6"
-                        fill="#38e58b"
-                      />
+                      <circle cx="420" cy="14" r="6" fill="#38e58b" />
                     </svg>
                   </div>
 
                   <div className="dashboard-tags">
-                    <span>
-                      <Target size={14} /> Estratégia
-                    </span>
-                    <span>
-                      <TrendingUp size={14} /> Performance
-                    </span>
-                    <span>
-                      <BarChart3 size={14} /> Dados
-                    </span>
+                    <span><Target size={14} /> Estratégia</span>
+                    <span><TrendingUp size={14} /> Performance</span>
+                    <span><BarChart3 size={14} /> Dados</span>
                   </div>
                 </div>
               </div>
@@ -327,7 +344,6 @@ export default function App() {
                 <span className="floating-icon">
                   <TrendingUp size={21} />
                 </span>
-
                 <div>
                   <strong>Otimização contínua</strong>
                   <small>Foco em oportunidades reais</small>
@@ -353,10 +369,7 @@ export default function App() {
           <div className="container">
             <div className="section-heading">
               <div>
-                <span className="section-kicker">
-                  O QUE FAZEMOS
-                </span>
-
+                <span className="section-kicker">O QUE FAZEMOS</span>
                 <h2>
                   Soluções para sua empresa
                   <br />
@@ -375,15 +388,11 @@ export default function App() {
                 const Icon = service.icon;
 
                 return (
-                  <article
-                    className="service-card"
-                    key={service.number}
-                  >
+                  <article className="service-card" key={service.number}>
                     <div className="service-top">
                       <div className="service-icon">
                         <Icon size={27} />
                       </div>
-
                       <span className="service-number">
                         {service.number}
                       </span>
@@ -413,9 +422,7 @@ export default function App() {
           <div className="container about-grid">
             <div className="about-graphic">
               <div className="about-graphic-inner">
-                <span className="graphic-small">
-                  MB DIGITAL
-                </span>
+                <span className="graphic-small">MB DIGITAL</span>
 
                 <Target
                   className="graphic-target"
@@ -613,8 +620,76 @@ export default function App() {
               Estratégia que conecta negócios a oportunidades.
             </span>
           </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 16, paddingBottom: 20 }}>
+            <button type="button" onClick={() => setPrivacyOpen(true)} style={textButtonStyle}>
+              Política de Privacidade
+            </button>
+            <button type="button" onClick={() => setConsentOpen(true)} style={textButtonStyle}>
+              Preferências de cookies {consent === "accepted" ? "(aceitos)" : consent === "rejected" ? "(recusados)" : ""}
+            </button>
+          </div>
         </div>
       </footer>
+
+      {consentOpen && (
+        <div role="dialog" aria-modal="true" aria-label="Preferências de cookies"
+          style={{ position: "fixed", bottom: 16, left: 16, right: 16, zIndex: 10000,
+            maxWidth: 650, margin: "0 auto", background: "#111c17", color: "#f5fff9",
+            border: "1px solid #345542", borderRadius: 18, padding: 22,
+            boxShadow: "0 12px 40px rgba(0,0,0,.55)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <Cookie size={24} color="#38e58b" />
+            <strong style={{ fontSize: 18 }}>Sua privacidade é importante</strong>
+          </div>
+          <p style={{ fontSize: 14, lineHeight: 1.6, margin: "0 0 14px" }}>
+            Usamos tecnologias de publicidade da Meta para medir visitas e cliques
+            no WhatsApp e melhorar nossas campanhas. Elas só serão ativadas com
+            sua autorização. Recusar não impede o uso do site.
+          </p>
+          <button type="button" onClick={() => setPrivacyOpen(true)} style={{ ...textButtonStyle, marginBottom: 16 }}>
+            Ler Política de Privacidade
+          </button>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            <button type="button" onClick={() => chooseConsent(false)}
+              style={{ flex: "1 1 140px", border: "1px solid #63816d", background: "transparent",
+                color: "#f5fff9", borderRadius: 10, padding: "12px 18px", cursor: "pointer", fontWeight: 700 }}>
+              Recusar
+            </button>
+            <button type="button" onClick={() => chooseConsent(true)}
+              style={{ flex: "1 1 140px", border: 0, background: "#38e58b",
+                color: "#082015", borderRadius: 10, padding: "12px 18px", cursor: "pointer", fontWeight: 700 }}>
+              Aceitar cookies de marketing
+            </button>
+          </div>
+        </div>
+      )}
+
+      {privacyOpen && (
+        <div role="dialog" aria-modal="true" aria-label="Política de Privacidade"
+          style={{ position: "fixed", inset: 0, zIndex: 10001, background: "rgba(0,0,0,.78)",
+            display: "flex", justifyContent: "center", alignItems: "center", padding: 16 }}>
+          <div style={{ background: "#111c17", color: "#f5fff9", width: "100%", maxWidth: 650,
+            maxHeight: "85vh", overflowY: "auto", border: "1px solid #345542",
+            borderRadius: 18, padding: 24, lineHeight: 1.65 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+              <h2 style={{ fontSize: 22, margin: 0 }}>Política de Privacidade</h2>
+              <button type="button" aria-label="Fechar política" onClick={() => setPrivacyOpen(false)}
+                style={{ ...textButtonStyle, padding: 8 }}><X size={22} /></button>
+            </div>
+            <p><strong>MB Digital</strong> — Esta página apresenta nossos serviços de marketing digital e criação de landing pages.</p>
+            <p><strong>Contato:</strong> quando você utiliza os links de WhatsApp, é direcionado ao serviço externo do WhatsApp. Informações que você decidir enviar na conversa serão usadas para atender à sua solicitação.</p>
+            <p><strong>Cookies e publicidade:</strong> com seu consentimento, utilizamos o Pixel da Meta para registrar visualizações de página (PageView) e cliques para contato (Contact). Esses dados podem ser tratados pela Meta conforme as políticas dela. O clique não comprova o envio de uma mensagem.</p>
+            <p><strong>Escolha:</strong> você pode aceitar ou recusar o rastreamento de marketing e alterar sua decisão pelo link “Preferências de cookies” no rodapé. O funcionamento básico do site não depende dessa autorização.</p>
+            <p><strong>Seus direitos:</strong> para solicitar informações sobre o tratamento de seus dados ou exercer direitos previstos na LGPD, entre em contato com a MB Digital pelo WhatsApp: (83) 99937-8365.</p>
+            <p style={{ fontSize: 13, opacity: .8 }}>Esta é uma versão inicial. Antes da divulgação em campanhas, revise-a com os dados completos do responsável, fornecedores, prazos de retenção e procedimentos aplicáveis.</p>
+            <button type="button" onClick={() => setPrivacyOpen(false)}
+              style={{ border: 0, background: "#38e58b", color: "#082015",
+                borderRadius: 10, padding: "11px 20px", cursor: "pointer", fontWeight: 700 }}>
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
 
       <a
         href={`${WHATSAPP}?text=${encodeURIComponent(
