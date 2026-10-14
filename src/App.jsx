@@ -108,8 +108,34 @@ function BrandLogo() {
 export default function App() {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
+  // Registra cliques nos links do WhatsApp.
+  // Contact indica clique, não mensagem enviada.
+  function handleWhatsAppClick(event) {
+    const link = event.target.closest?.("a[href]");
+    if (!link) return;
+
+    try {
+      const url = new URL(link.href);
+
+      if (
+        url.hostname !== "wa.me" &&
+        url.hostname !== "api.whatsapp.com"
+      ) {
+        return;
+      }
+
+      if (typeof window.fbq === "function") {
+        window.fbq("track", "Contact", {
+          contact_method: "WhatsApp",
+        });
+      }
+    } catch (error) {
+      // O rastreamento não deve impedir a navegação.
+    }
+  }
+
   return (
-    <div className="site">
+    <div className="site" onClick={handleWhatsAppClick}>
       <header className="header">
         <div className="container header-inner">
           <BrandLogo />
@@ -131,7 +157,7 @@ export default function App() {
 
           <a
             href={`${WHATSAPP}?text=${encodeURIComponent(
-              "Olá! Gostaria de saber mais sobre as soluções digitais da MB Digital."
+              "Olá! Gostaria de saber mais sobre a gestão de tráfego pago da MB Digital."
             )}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -154,6 +180,7 @@ export default function App() {
       <main>
         <section className="hero" id="inicio">
           <div className="hero-glow" />
+
           <div className="container hero-grid">
             <div className="hero-content">
               <div className="eyebrow">
@@ -205,7 +232,9 @@ export default function App() {
               <div className="dashboard">
                 <div className="dashboard-top">
                   <div className="dashboard-dots">
-                    <i /><i /><i />
+                    <i />
+                    <i />
+                    <i />
                   </div>
                   <span>VISÃO ESTRATÉGICA</span>
                   <BarChart3 size={17} />
@@ -226,7 +255,10 @@ export default function App() {
 
                   <div className="chart-visual">
                     <div className="chart-grid">
-                      <span /><span /><span /><span />
+                      <span />
+                      <span />
+                      <span />
+                      <span />
                     </div>
 
                     <svg
@@ -259,6 +291,7 @@ export default function App() {
                         d="M0 140 C45 130 65 112 100 120 S165 90 205 94 S275 48 315 65 S370 20 420 14 L420 160 L0 160 Z"
                         fill="url(#chartFill)"
                       />
+
                       <path
                         d="M0 140 C45 130 65 112 100 120 S165 90 205 94 S275 48 315 65 S370 20 420 14"
                         fill="none"
@@ -266,14 +299,26 @@ export default function App() {
                         strokeWidth="3"
                         strokeLinecap="round"
                       />
-                      <circle cx="420" cy="14" r="6" fill="#38e58b" />
+
+                      <circle
+                        cx="420"
+                        cy="14"
+                        r="6"
+                        fill="#38e58b"
+                      />
                     </svg>
                   </div>
 
                   <div className="dashboard-tags">
-                    <span><Target size={14} /> Estratégia</span>
-                    <span><TrendingUp size={14} /> Performance</span>
-                    <span><BarChart3 size={14} /> Dados</span>
+                    <span>
+                      <Target size={14} /> Estratégia
+                    </span>
+                    <span>
+                      <TrendingUp size={14} /> Performance
+                    </span>
+                    <span>
+                      <BarChart3 size={14} /> Dados
+                    </span>
                   </div>
                 </div>
               </div>
@@ -282,6 +327,7 @@ export default function App() {
                 <span className="floating-icon">
                   <TrendingUp size={21} />
                 </span>
+
                 <div>
                   <strong>Otimização contínua</strong>
                   <small>Foco em oportunidades reais</small>
@@ -307,7 +353,10 @@ export default function App() {
           <div className="container">
             <div className="section-heading">
               <div>
-                <span className="section-kicker">O QUE FAZEMOS</span>
+                <span className="section-kicker">
+                  O QUE FAZEMOS
+                </span>
+
                 <h2>
                   Soluções para sua empresa
                   <br />
@@ -316,9 +365,8 @@ export default function App() {
               </div>
 
               <p>
-                Cada negócio tem seus desafios. Desenvolvemos soluções
-                de marketing digital e páginas estratégicas alinhadas
-                aos seus objetivos.
+                Cada negócio tem seus desafios. Unimos tráfego pago e
+                soluções digitais alinhadas aos seus objetivos.
               </p>
             </div>
 
@@ -327,11 +375,15 @@ export default function App() {
                 const Icon = service.icon;
 
                 return (
-                  <article className="service-card" key={service.number}>
+                  <article
+                    className="service-card"
+                    key={service.number}
+                  >
                     <div className="service-top">
                       <div className="service-icon">
                         <Icon size={27} />
                       </div>
+
                       <span className="service-number">
                         {service.number}
                       </span>
@@ -361,7 +413,9 @@ export default function App() {
           <div className="container about-grid">
             <div className="about-graphic">
               <div className="about-graphic-inner">
-                <span className="graphic-small">MB DIGITAL</span>
+                <span className="graphic-small">
+                  MB DIGITAL
+                </span>
 
                 <Target
                   className="graphic-target"
