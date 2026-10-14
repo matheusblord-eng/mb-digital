@@ -420,50 +420,42 @@ export default function App() {
 
         <section className="about section" id="sobre">
           <div className="container about-grid">
-            <div className="about-graphic">
-              <div className="about-graphic-inner">
-                <span className="graphic-small">MB DIGITAL</span>
-
-                <Target
-                  className="graphic-target"
-                  size={105}
-                  strokeWidth={1}
-                />
-
-                <strong>
-                  Não é apenas
-                  <br />
-                  anunciar.
-                  <br />
-                  <span>É ter estratégia.</span>
-                </strong>
-
-                <span className="graphic-footer">
-                  TRÁFEGO PAGO • MARKETING DIGITAL
-                </span>
+            <div className="about-graphic" style={{ overflow: "hidden", position: "relative", minHeight: 420, borderRadius: 24 }}>
+              <img
+                src="/matheus-perfil.jpg"
+                alt="Retrato profissional de Matheus Lima, gestor de tráfego pago da MB Digital"
+                loading="lazy"
+                style={{ width: "100%", height: "100%", minHeight: 420, position: "absolute", inset: 0, objectFit: "cover", objectPosition: "center 35%", display: "block" }}
+              />
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(4,15,10,.96) 0%, rgba(4,15,10,.45) 33%, transparent 65%)", pointerEvents: "none" }} />
+              <div style={{ position: "absolute", bottom: 28, left: 26, right: 20, zIndex: 1 }}>
+                <span style={{ display: "block", color: "#38e58b", fontSize: 12, fontWeight: 800, letterSpacing: "0.14em", marginBottom: 8 }}>À FRENTE DA MB DIGITAL</span>
+                <strong style={{ display: "block", color: "#fff", fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.15 }}>Matheus Lima</strong>
+                <span style={{ display: "block", color: "#e2eee6", fontSize: 15, marginTop: 8 }}>Gestor de Tráfego Pago</span>
               </div>
             </div>
 
             <div className="about-content">
               <span className="section-kicker">
-                POR QUE A MB DIGITAL?
+                CONHEÇA QUEM ESTÁ POR TRÁS DA MB DIGITAL
               </span>
 
               <h2>
-                Mais que anúncios.
+                Estratégia com
                 <br />
-                <span>Uma estratégia para crescer.</span>
+                <span>atendimento próximo.</span>
               </h2>
 
               <p>
-                A MB Digital é especializada em gestão de tráfego pago,
-                com atuação online e foco em ajudar empresas a conquistar
-                visibilidade e gerar novas oportunidades comerciais.
+                Sou Matheus Lima, gestor de tráfego pago à frente da MB Digital.
+                Atuo de forma online, ajudando empresas a ampliar sua
+                visibilidade e criar oportunidades de contato com novos clientes.
               </p>
 
               <p>
-                Nosso trabalho une planejamento, execução e análise para
-                que cada campanha tenha um objetivo claro.
+                Meu trabalho combina planejamento, execução e análise de dados,
+                com acompanhamento próximo e estratégias alinhadas aos objetivos
+                de cada negócio.
               </p>
 
               <div className="benefits">
