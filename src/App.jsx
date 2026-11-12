@@ -37,7 +37,7 @@ const services = [
     number: "02",
     title: "Gestão de Google Ads",
     description:
-      "Sua empresa aparece para quem já está procurando no Google o que você vende. Ideal para clínicas, salões e e-commerces que querem clientes prontos para comprar.",
+      "Sua empresa aparece para quem já está procurando no Google o que você vende. Ideal para clínicas, centros de beleza e e-commerces que querem clientes prontos para comprar.",
   },
   {
     icon: PanelsTopLeft,
@@ -51,7 +51,7 @@ const services = [
 const niches = [
   "LOJAS DE ROUPA",
   "CLÍNICAS DE ESTÉTICA",
-  "SALÕES DE BELEZA",
+  "CENTROS DE BELEZA",
   "E-COMMERCE",
 ];
 
@@ -270,12 +270,12 @@ export default function App() {
                 <br />
                 <span>sua loja, clínica</span>
                 <br />
-                ou salão.
+                ou centro de beleza.
               </h1>
 
               <p className="hero-description">
                 Gestão de Meta Ads e Google Ads para lojas de roupa,
-                clínicas de estética, salões de beleza e e-commerces.
+                clínicas de estética, centros de beleza e e-commerces.
                 Atendimento próximo em Cajazeiras, Sousa e região, e online
                 para todo o Brasil.
               </p>
@@ -557,7 +557,7 @@ export default function App() {
               <p>
                 Sou Matheus Batista, gestor de tráfego pago à frente da MB
                 Digital. Trabalho com lojas de roupa, clínicas de estética,
-                salões de beleza e e-commerces que querem transformar o
+                centros de beleza e e-commerces que querem transformar o
                 Instagram em uma fonte constante de clientes.
               </p>
 
