@@ -1180,9 +1180,10 @@ a:focus-visible {
 .case-before,
 .case-after {
   display: block;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(26px, 2.4vw, 34px);
   font-weight: 900;
-  letter-spacing: -1.5px;
+  letter-spacing: -1.2px;
+  white-space: nowrap;
 }
 
 .case-before {

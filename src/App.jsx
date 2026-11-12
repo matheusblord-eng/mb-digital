@@ -76,6 +76,30 @@ const cases = [
     detail:
       "Mais de 1.400 novos seguidores com campanhas de Reels de provador e novidades, focadas em clientes da região.",
   },
+  {
+    icon: MessageCircle,
+    segment: "Clínica de estética · Cajazeiras/PB",
+    name: "Clínica Graziele Paiva",
+    stats: [
+      { label: "Conversas", value: "120" },
+      { label: "Por conversa", value: "R$ 1,25" },
+    ],
+    metric: "conversas iniciadas no WhatsApp",
+    detail:
+      "Campanha de mensagens com público local, levando pacientes direto para o WhatsApp da clínica para tirar dúvidas e agendar.",
+  },
+  {
+    icon: TrendingUp,
+    segment: "Loja de moda para toda a família · Brejo Santo/CE",
+    name: "Monique Modas",
+    stats: [
+      { label: "Em 5 Reels", value: "169,8 mil" },
+      { label: "Reels mais visto", value: "47,2 mil" },
+    ],
+    metric: "visualizações em Reels",
+    detail:
+      "Reels de coleções e promoções, como o Feirão Kids e a Semana das Crianças, divulgados para Brejo Santo e região.",
+  },
 ];
 
 const faqs = [
@@ -443,17 +467,28 @@ export default function App() {
                       </div>
                     </div>
 
-                    <div className="case-numbers">
-                      <div>
-                        <small>Antes</small>
-                        <span className="case-before">{item.before}</span>
+                    {item.stats ? (
+                      <div className="case-numbers">
+                        {item.stats.map((stat) => (
+                          <div key={stat.label}>
+                            <small>{stat.label}</small>
+                            <span className="case-after">{stat.value}</span>
+                          </div>
+                        ))}
                       </div>
-                      <ArrowRight size={22} />
-                      <div>
-                        <small>Depois</small>
-                        <span className="case-after">{item.after}</span>
+                    ) : (
+                      <div className="case-numbers">
+                        <div>
+                          <small>Antes</small>
+                          <span className="case-before">{item.before}</span>
+                        </div>
+                        <ArrowRight size={22} />
+                        <div>
+                          <small>Depois</small>
+                          <span className="case-after">{item.after}</span>
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     <p className="case-metric">{item.metric}</p>
                     <p className="case-detail">{item.detail}</p>
