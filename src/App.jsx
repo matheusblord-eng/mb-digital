@@ -78,7 +78,7 @@ const cases = [
   },
   {
     icon: MessageCircle,
-    segment: "Clínica de estética",
+    segment: "Clínica de estética · Cajazeiras/PB",
     name: "Clínica Graziele Paiva",
     stats: [
       { label: "Conversas", value: "120" },
@@ -87,6 +87,18 @@ const cases = [
     metric: "conversas iniciadas no WhatsApp",
     detail:
       "Campanha de mensagens com público local, levando pacientes direto para o WhatsApp da clínica para tirar dúvidas e agendar.",
+  },
+  {
+    icon: TrendingUp,
+    segment: "Loja de moda para toda a família · Brejo Santo/CE",
+    name: "Monique Modas",
+    stats: [
+      { label: "Em 5 Reels", value: "169,8 mil" },
+      { label: "Reels mais visto", value: "47,2 mil" },
+    ],
+    metric: "visualizações em Reels",
+    detail:
+      "Reels de coleções e promoções, como o Feirão Kids e a Semana das Crianças, divulgados para Brejo Santo e região.",
   },
 ];
 
