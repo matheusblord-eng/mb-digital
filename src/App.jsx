@@ -30,43 +30,82 @@ const services = [
     number: "01",
     title: "Gestão de Meta Ads",
     description:
-      "Campanhas estratégicas no Instagram e Facebook para alcançar pessoas com potencial de se tornarem clientes.",
+      "Anúncios no Instagram e no Facebook para trazer pessoas da sua região até o seu perfil, o seu WhatsApp ou a sua loja. Inclui público, criativos, acompanhamento diário e ajustes.",
   },
   {
     icon: Search,
     number: "02",
     title: "Gestão de Google Ads",
     description:
-      "Anúncios para apresentar sua empresa a pessoas que estão pesquisando por produtos ou serviços como os seus.",
-  },
-  {
-    icon: MousePointerClick,
-    number: "03",
-    title: "Captação de Leads",
-    description:
-      "Estratégias para gerar oportunidades de contato e aproximar sua empresa de novos clientes.",
-  },
-  {
-    icon: BarChart3,
-    number: "04",
-    title: "Análise e Otimização",
-    description:
-      "Acompanhamento de métricas e ajustes contínuos para melhorar o desempenho das campanhas.",
+      "Sua empresa aparece para quem já está procurando no Google o que você vende. Ideal para clínicas, salões e e-commerces que querem clientes prontos para comprar.",
   },
   {
     icon: PanelsTopLeft,
-    number: "05",
-    title: "Criação de Landing Pages",
+    number: "03",
+    title: "Landing Pages",
     description:
-      "Desenvolvimento de páginas profissionais, responsivas e estratégicas para apresentar serviços, apoiar campanhas de tráfego pago e captar potenciais clientes.",
+      "Páginas rápidas e feitas para o celular, que apresentam o seu serviço e levam o visitante direto para o WhatsApp. Já entregues com o Pixel da Meta instalado.",
+  },
+];
+
+const niches = [
+  "LOJAS DE ROUPA",
+  "CLÍNICAS DE ESTÉTICA",
+  "SALÕES DE BELEZA",
+  "E-COMMERCE",
+];
+
+const cases = [
+  {
+    icon: TrendingUp,
+    segment: "Restaurante de fast-food · Cajazeiras/PB",
+    name: "Bob's Cajazeiras",
+    before: "3,9 mil",
+    after: "155,8 mil",
+    metric: "visualizações no perfil em 30 dias",
+    detail:
+      "Campanhas de alcance e vídeo com público local. O perfil também passou de 1.544 para 1.989 seguidores.",
+  },
+  {
+    icon: Instagram,
+    segment: "Loja de moda feminina · Cajazeiras/PB",
+    name: "Toda Chique",
+    before: "3.454",
+    after: "4.925",
+    metric: "seguidores no Instagram",
+    detail:
+      "Mais de 1.400 novos seguidores com campanhas de Reels de provador e novidades, focadas em clientes da região.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Quanto preciso investir em anúncios?",
+    answer:
+      "Depende do seu objetivo e da sua região. Para negócios locais, já dá para começar com uma verba diária baixa e aumentar conforme os resultados aparecem. No diagnóstico eu indico um valor realista para o seu caso.",
+  },
+  {
+    question: "O valor dos anúncios está incluso na gestão?",
+    answer:
+      "Não. A verba dos anúncios é paga direto à Meta ou ao Google, no cartão ou Pix da sua empresa, e você acompanha cada centavo. A gestão é o meu serviço de planejar, criar, acompanhar e otimizar as campanhas.",
+  },
+  {
+    question: "Em quanto tempo vejo resultado?",
+    answer:
+      "Os primeiros dados aparecem nos primeiros dias. A plataforma leva cerca de uma a duas semanas para aprender quem é o seu público, e a partir daí os resultados ficam mais estáveis e previsíveis.",
+  },
+  {
+    question: "Vou acompanhar o que está acontecendo?",
+    answer:
+      "Sim. O acompanhamento é feito pelo WhatsApp, com os números principais explicados de forma simples: quanto foi investido, quantas pessoas foram alcançadas e quantos contatos chegaram.",
   },
 ];
 
 const benefits = [
-  "Estratégias adaptadas ao seu negócio",
-  "Segmentação de público e objetivos",
-  "Acompanhamento das principais métricas",
-  "Otimização contínua dos anúncios",
+  "Campanhas pensadas para o seu tipo de negócio",
+  "Público certo na sua cidade e na região",
+  "Acompanhamento direto pelo WhatsApp",
+  "Ajustes constantes com base nos números",
 ];
 
 function WhatsAppButton({ children, className = "", message }) {
@@ -180,6 +219,9 @@ export default function App() {
             <a href="#inicio" onClick={() => setMenuOpen(false)}>
               Início
             </a>
+            <a href="#resultados" onClick={() => setMenuOpen(false)}>
+              Resultados
+            </a>
             <a href="#servicos" onClick={() => setMenuOpen(false)}>
               Serviços
             </a>
@@ -220,21 +262,22 @@ export default function App() {
             <div className="hero-content">
               <div className="eyebrow">
                 <span className="status-dot" />
-                MARKETING DIGITAL ORIENTADO POR DADOS
+                TRÁFEGO PAGO PARA NEGÓCIOS QUE VENDEM PELO INSTAGRAM
               </div>
 
               <h1>
-                Seu negócio merece
+                Mais clientes para
                 <br />
-                <span>mais visibilidade.</span>
+                <span>sua loja, clínica</span>
                 <br />
-                E mais oportunidades.
+                ou salão.
               </h1>
 
               <p className="hero-description">
-                Transformamos anúncios em oportunidades de negócio.
-                Gestão estratégica de tráfego pago para empresas que
-                querem alcançar o público certo e crescer com inteligência.
+                Gestão de Meta Ads e Google Ads para lojas de roupa,
+                clínicas de estética, salões de beleza e e-commerces.
+                Atendimento próximo em Cajazeiras, Sousa e região, e online
+                para todo o Brasil.
               </p>
 
               <div className="hero-actions">
@@ -242,8 +285,8 @@ export default function App() {
                   Quero atrair mais clientes
                 </WhatsAppButton>
 
-                <a href="#servicos" className="btn btn-secondary">
-                  Conhecer serviços <ChevronRight size={18} />
+                <a href="#resultados" className="btn btn-secondary">
+                  Ver resultados <ChevronRight size={18} />
                 </a>
               </div>
 
@@ -252,7 +295,8 @@ export default function App() {
                   <ShieldCheck size={20} />
                 </span>
                 <span>
-                  Estratégia, análise e acompanhamento em cada campanha.
+                  De 3,9 mil para 155,8 mil visualizações em 30 dias para um
+                  restaurante de Cajazeiras.
                 </span>
               </div>
             </div>
@@ -269,22 +313,22 @@ export default function App() {
                   <div className="dashboard-dots">
                     <i /><i /><i />
                   </div>
-                  <span>VISÃO ESTRATÉGICA</span>
+                  <span>RESULTADO DE CLIENTE</span>
                   <BarChart3 size={17} />
                 </div>
 
                 <div className="dashboard-body">
                   <div className="dashboard-label">
-                    MARKETING DE PERFORMANCE
+                    VISUALIZAÇÕES EM 30 DIAS
                   </div>
 
                   <div className="dashboard-heading">
-                    Decisões baseadas
+                    155,8 mil
                     <br />
-                    em dados<span>.</span>
+                    visualizações<span>.</span>
                   </div>
 
-                  <p>Planejar. Analisar. Otimizar.</p>
+                  <p>Restaurante em Cajazeiras/PB · antes: 3,9 mil</p>
 
                   <div className="chart-visual">
                     <div className="chart-grid">
@@ -333,9 +377,9 @@ export default function App() {
                   </div>
 
                   <div className="dashboard-tags">
-                    <span><Target size={14} /> Estratégia</span>
-                    <span><TrendingUp size={14} /> Performance</span>
-                    <span><BarChart3 size={14} /> Dados</span>
+                    <span><Target size={14} /> Meta Ads</span>
+                    <span><TrendingUp size={14} /> Reels</span>
+                    <span><BarChart3 size={14} /> Público local</span>
                   </div>
                 </div>
               </div>
@@ -345,8 +389,8 @@ export default function App() {
                   <TrendingUp size={21} />
                 </span>
                 <div>
-                  <strong>Otimização contínua</strong>
-                  <small>Foco em oportunidades reais</small>
+                  <strong>+1.471 seguidores</strong>
+                  <small>Loja de moda feminina</small>
                 </div>
               </div>
             </div>
@@ -354,14 +398,78 @@ export default function App() {
 
           <div className="container">
             <div className="hero-bottom">
-              <span>ESTRATÉGIA</span>
-              <i />
-              <span>CRIATIVIDADE</span>
-              <i />
-              <span>PERFORMANCE</span>
-              <i />
-              <span>RESULTADOS MENSURÁVEIS</span>
+              {niches.map((niche, index) => (
+                <React.Fragment key={niche}>
+                  {index > 0 && <i />}
+                  <span>{niche}</span>
+                </React.Fragment>
+              ))}
             </div>
+          </div>
+        </section>
+
+        <section className="results section" id="resultados">
+          <div className="container">
+            <div className="section-heading">
+              <div>
+                <span className="section-kicker">RESULTADOS REAIS</span>
+                <h2>
+                  Números de clientes
+                  <br />
+                  <span>da nossa região.</span>
+                </h2>
+              </div>
+
+              <p>
+                Nada de promessa genérica. Estes são resultados de campanhas
+                que eu gerencio, com dados tirados do próprio Instagram dos
+                clientes.
+              </p>
+            </div>
+
+            <div className="case-grid">
+              {cases.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <article className="case-card" key={item.name}>
+                    <div className="case-top">
+                      <div className="service-icon">
+                        <Icon size={25} />
+                      </div>
+                      <div>
+                        <strong>{item.name}</strong>
+                        <small>{item.segment}</small>
+                      </div>
+                    </div>
+
+                    <div className="case-numbers">
+                      <div>
+                        <small>Antes</small>
+                        <span className="case-before">{item.before}</span>
+                      </div>
+                      <ArrowRight size={22} />
+                      <div>
+                        <small>Depois</small>
+                        <span className="case-after">{item.after}</span>
+                      </div>
+                    </div>
+
+                    <p className="case-metric">{item.metric}</p>
+                    <p className="case-detail">{item.detail}</p>
+                  </article>
+                );
+              })}
+            </div>
+
+            <blockquote className="testimonial">
+              <MessageCircle size={22} />
+              <p>
+                “Foi sucesso, graças a Deus! Tudo como esperado, e ainda
+                melhor. Fazer história este mês!”
+              </p>
+              <cite>Cliente da MB Digital, pelo WhatsApp</cite>
+            </blockquote>
           </div>
         </section>
 
@@ -369,17 +477,17 @@ export default function App() {
           <div className="container">
             <div className="section-heading">
               <div>
-                <span className="section-kicker">O QUE FAZEMOS</span>
+                <span className="section-kicker">O QUE EU FAÇO</span>
                 <h2>
-                  Soluções para sua empresa
+                  Três serviços,
                   <br />
-                  <span>ir mais longe.</span>
+                  <span>um objetivo: vender mais.</span>
                 </h2>
               </div>
 
               <p>
-                Cada negócio tem seus desafios. Unimos tráfego pago e
-                soluções digitais alinhadas aos seus objetivos.
+                Você cuida do seu negócio. Eu cuido de colocar ele na frente
+                das pessoas certas.
               </p>
             </div>
 
@@ -423,14 +531,14 @@ export default function App() {
             <div className="about-graphic" style={{ overflow: "hidden", position: "relative", minHeight: 420, borderRadius: 24 }}>
               <img
                 src="/matheus-perfil.jpg"
-                alt="Retrato profissional de Matheus Lima, gestor de tráfego pago da MB Digital"
+                alt="Retrato profissional de Matheus Batista, gestor de tráfego pago da MB Digital"
                 loading="lazy"
                 style={{ width: "100%", height: "100%", minHeight: 420, position: "absolute", inset: 0, objectFit: "cover", objectPosition: "center 35%", display: "block" }}
               />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(4,15,10,.96) 0%, rgba(4,15,10,.45) 33%, transparent 65%)", pointerEvents: "none" }} />
               <div style={{ position: "absolute", bottom: 28, left: 26, right: 20, zIndex: 1 }}>
                 <span style={{ display: "block", color: "#38e58b", fontSize: 12, fontWeight: 800, letterSpacing: "0.14em", marginBottom: 8 }}>À FRENTE DA MB DIGITAL</span>
-                <strong style={{ display: "block", color: "#fff", fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.15 }}>Matheus Lima</strong>
+                <strong style={{ display: "block", color: "#fff", fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.15 }}>Matheus Batista</strong>
                 <span style={{ display: "block", color: "#e2eee6", fontSize: 15, marginTop: 8 }}>Gestor de Tráfego Pago</span>
               </div>
             </div>
@@ -447,15 +555,17 @@ export default function App() {
               </h2>
 
               <p>
-                Sou Matheus Lima, gestor de tráfego pago à frente da MB Digital.
-                Atuo de forma online, ajudando empresas a ampliar sua
-                visibilidade e criar oportunidades de contato com novos clientes.
+                Sou Matheus Batista, gestor de tráfego pago à frente da MB
+                Digital. Trabalho com lojas de roupa, clínicas de estética,
+                salões de beleza e e-commerces que querem transformar o
+                Instagram em uma fonte constante de clientes.
               </p>
 
               <p>
-                Meu trabalho combina planejamento, execução e análise de dados,
-                com acompanhamento próximo e estratégias alinhadas aos objetivos
-                de cada negócio.
+                Sou do Sertão da Paraíba e conheço o público daqui. Atendo
+                pessoalmente em Cajazeiras, Sousa e região, e online para
+                qualquer cidade do Brasil, sempre com contato direto comigo
+                pelo WhatsApp.
               </p>
 
               <div className="benefits">
@@ -518,6 +628,32 @@ export default function App() {
                   <h3>{title}</h3>
                   <p>{description}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="faq section" id="duvidas">
+          <div className="container">
+            <div className="process-heading">
+              <span className="section-kicker">DÚVIDAS FREQUENTES</span>
+
+              <h2>
+                Antes de <span>começar.</span>
+              </h2>
+
+              <p>As perguntas que quase todo cliente faz na primeira conversa.</p>
+            </div>
+
+            <div className="faq-list">
+              {faqs.map((faq) => (
+                <details className="faq-item" key={faq.question}>
+                  <summary>
+                    {faq.question}
+                    <ChevronRight size={18} />
+                  </summary>
+                  <p>{faq.answer}</p>
+                </details>
               ))}
             </div>
           </div>
@@ -598,7 +734,7 @@ export default function App() {
                 <Instagram size={16} /> Instagram
               </a>
 
-              <span>Atendimento online</span>
+              <span>Cajazeiras/PB e online</span>
             </div>
           </div>
 
