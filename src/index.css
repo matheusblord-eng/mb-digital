@@ -1131,7 +1131,7 @@ a:focus-visible {
 
 .case-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 17px;
 }
 
@@ -1180,9 +1180,10 @@ a:focus-visible {
 .case-before,
 .case-after {
   display: block;
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(26px, 2.4vw, 34px);
   font-weight: 900;
-  letter-spacing: -1.5px;
+  letter-spacing: -1.2px;
+  white-space: nowrap;
 }
 
 .case-before {
@@ -1284,6 +1285,12 @@ a:focus-visible {
   color: #94a397;
   font-size: 14px;
   line-height: 1.85;
+}
+
+@media (max-width: 1050px) {
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
