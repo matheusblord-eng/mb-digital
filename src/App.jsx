@@ -58,8 +58,8 @@ const niches = [
 const cases = [
   {
     icon: TrendingUp,
-    segment: "Restaurante de fast-food · Cajazeiras/PB",
-    name: "Bob's Cajazeiras",
+    segment: "Restaurante · Sertão da Paraíba",
+    name: "Rede de fast-food",
     before: "3,9 mil",
     after: "155,8 mil",
     metric: "visualizações no perfil em 30 dias",
@@ -68,8 +68,8 @@ const cases = [
   },
   {
     icon: Instagram,
-    segment: "Loja de moda feminina · Cajazeiras/PB",
-    name: "Toda Chique",
+    segment: "Varejo de moda · Cajazeiras/PB",
+    name: "Loja de moda feminina",
     before: "3.454",
     after: "4.925",
     metric: "seguidores no Instagram",
@@ -78,8 +78,8 @@ const cases = [
   },
   {
     icon: MessageCircle,
-    segment: "Clínica de estética · Cajazeiras/PB",
-    name: "Clínica Graziele Paiva",
+    segment: "Saúde e beleza · Cajazeiras/PB",
+    name: "Clínica de estética",
     stats: [
       { label: "Conversas", value: "120" },
       { label: "Por conversa", value: "R$ 1,25" },
@@ -90,15 +90,15 @@ const cases = [
   },
   {
     icon: TrendingUp,
-    segment: "Loja de moda para toda a família · Brejo Santo/CE",
-    name: "Monique Modas",
+    segment: "Varejo de moda · Cariri cearense",
+    name: "Loja de moda para toda a família",
     stats: [
       { label: "Em 5 Reels", value: "169,8 mil" },
       { label: "Reels mais visto", value: "47,2 mil" },
     ],
     metric: "visualizações em Reels",
     detail:
-      "Reels de coleções e promoções, como o Feirão Kids e a Semana das Crianças, divulgados para Brejo Santo e região.",
+      "Reels de coleções e promoções, como o Feirão Kids e a Semana das Crianças, divulgados para o público da região.",
   },
 ];
 
@@ -320,7 +320,7 @@ export default function App() {
                 </span>
                 <span>
                   De 3,9 mil para 155,8 mil visualizações em 30 dias para um
-                  restaurante de Cajazeiras.
+                  restaurante do Sertão da Paraíba.
                 </span>
               </div>
             </div>
@@ -352,7 +352,7 @@ export default function App() {
                     visualizações<span>.</span>
                   </div>
 
-                  <p>Restaurante em Cajazeiras/PB · antes: 3,9 mil</p>
+                  <p>Restaurante no Sertão da Paraíba · antes: 3,9 mil</p>
 
                   <div className="chart-visual">
                     <div className="chart-grid">
